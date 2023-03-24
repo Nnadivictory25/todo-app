@@ -42,7 +42,7 @@ function App() {
 
 	return (
 		<Body
-			bgColor={theme == 'dark' ? 'hsl(235, 21%, 11%)' : 'hsl(0, 0%, 98%)'}
+			bgColor={theme == 'dark' ? 'hsl(235, 21%, 11%)' : 'hsl(236, 33%, 92%)'}
 			getBgImg={() => getBgImg()}>
 			<TodoContainer theme={theme}>
 				<div className='flex justify-between items-center mb-10'>
@@ -54,7 +54,7 @@ function App() {
 					)}
 				</div>
 
-				<TodoInput onSubmit={addTodo}/>
+				<TodoInput onSubmit={addTodo} theme={theme} />
 			</TodoContainer>
 		</Body>
 	);
