@@ -193,7 +193,7 @@ const TodoList = ({
 					<p
 						onClick={() => onFilter('completed')}
 						className={`${hoverClass} ${
-							currentFilter == 'completed' && 'completed'
+							currentFilter == 'completed' && 'active'
 						}`}>
 						Completed
 					</p>

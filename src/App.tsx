@@ -12,38 +12,35 @@ import TodoInput from './components/TodoInput';
 import TodoList, { Todo } from './components/TodoList';
 import './App.scss';
 
-interface TodoQuery {
-	todos: Todo[];
-}
 
-const todos: Todo[] = [
-	{
-	  id: 1,
-	  todo: "Finish homework",
-	  isCompleted: false,
-	},
-	{
-	  id: 2,
-	  todo: "Go grocery shopping",
-	  isCompleted: false,
-	},
-	{
-	  id: 3,
-	  todo: "Attend meeting",
-	  isCompleted: true,
-	},
-	{
-	  id: 4,
-	  todo: "Clean the house",
-	  isCompleted: false,
-	},
-  ];
   
 
 function App() {
 	const [theme, setTheme] = useState('dark');
 	const isWideScreen = useWindowWide(480);
 	const [currentFilter, setCurrentFilter] = useState('all')
+	const [todos, setTodos] = useState<Todo[]>([
+		{
+			id: 1,
+			todo: "Finish homework",
+			isCompleted: false,
+		  },
+		  {
+			id: 2,
+			todo: "Go grocery shopping",
+			isCompleted: false,
+		  },
+		  {
+			id: 3,
+			todo: "Attend meeting",
+			isCompleted: true,
+		  },
+		  {
+			id: 4,
+			todo: "Clean the house",
+			isCompleted: false,
+		  },
+	])
 
 
 
@@ -80,6 +77,10 @@ function App() {
 		console.log(todo);
 	};
 
+	const handleToggle = (id: number, isCompleted: boolean) => {
+		setTodos(todos.map(todo => todo.id == id ? {...todo, isCompleted: isCompleted} : todo))
+	}
+
 	return (
 		<Body
 			bgColor={theme == 'dark' ? 'hsl(235, 21%, 11%)' : 'hsl(236, 33%, 92%)'}
@@ -113,7 +114,7 @@ function App() {
 					onFilter={(filter) => setCurrentFilter(filter)}
 					onClear={() => console.log('clear completed')}
 					onRemoveTodo={(id) => console.log('remove completed ' + id)}
-					onToggleTodo={(id, isCompleted) => console.log('toggled ' + id + isCompleted)}
+					onToggleTodo={(id, isCompleted) => handleToggle(id, isCompleted)}
 				/>
 			</TodoContainer>
 		</Body>
