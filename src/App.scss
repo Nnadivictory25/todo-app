@@ -116,3 +116,18 @@ $breakpoint-down: (
   z-index: 2;
   background: url("./assets/icon-check.svg") no-repeat center center;
 }
+
+.footer {
+  p {
+    transition: all .15s ease-in-out;
+      cursor: pointer;
+      &.active {
+        color: hsl(220, 98%, 61%);
+        font-weight: 600;
+
+        &:hover {
+          color: hsl(220, 98%, 61%);
+        }
+      }
+  }
+}
