@@ -56,7 +56,7 @@ const TodoList = ({
 	return (
 		<>
 			<div
-				className={`rounded shadow-sm relative transition duration-150 mt-6 bg-lightGray`}>
+				className={`rounded shadow-sm relative transition duration-150 mt-6 bg-${themeColor}`}>
 				{currentFilter == 'all'
 					? todos.map(({ id, todo, isCompleted }) => (
 							<label
