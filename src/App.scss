@@ -3,6 +3,10 @@
   --vh: 1vh;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .body {
   transition: all .15s ease-in-out;
   background-size: 100% auto;

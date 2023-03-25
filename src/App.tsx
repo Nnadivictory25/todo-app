@@ -14,14 +14,16 @@ import './App.scss';
 
 
 
-
 function App() {
 	const [theme, setTheme] = useState('dark');
 	const isWideScreen = useWindowWide(480);
 	const [currentFilter, setCurrentFilter] = useState('all')
 	const [todos, setTodos] = useState<Todo[]>([])
+	const [todoLength, setTodoLength] = useState(0)
 	
 	
+	const height = Number(localStorage.getItem('vh')) || 1
+
 	const count = todos.filter(todo => todo.isCompleted === false).length
 
 	useEffect(() => {
@@ -36,8 +38,15 @@ function App() {
 
 	useEffect(() => {
 		localStorage.setItem('todos', JSON.stringify(todos))
-	},[todos])
+	}, [todos])
+	
 
+	useEffect(() => {
+		const newHeight = height + 0.06
+		const root = document.documentElement;
+		root?.style.setProperty('--vh', `${newHeight}vh`);
+		localStorage.setItem('vh', `${newHeight}`)
+	}, [todoLength]);
 
 	const toggleTheme = () => {
 		let newTheme = theme === 'dark' ? 'light' : 'dark';
@@ -63,6 +72,7 @@ function App() {
 	const addTodo = (todo: string) => {
 		const todoToAdd: Todo = { id: Date.now(), todo: todo, isCompleted: false }
 		setTodos([todoToAdd, ...todos])
+		setTodoLength(todos.length + 1)
 	};
 
 	const handleToggle = (id: number, isCompleted: boolean) => {
