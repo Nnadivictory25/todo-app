@@ -41,6 +41,7 @@ const TodoList = ({
 		);
 	}, [theme]);
 
+
 	const hoverClass = `${
 		theme == 'dark' ? 'hover:text-lightGray' : 'hover:text-vDarkGreyBlue'
 	}`;
@@ -51,6 +52,7 @@ const TodoList = ({
 		onToggleTodo(id, todoCompleted);
 	};
 
+	if (todos.length == 0) return <p></p>;
 	return (
 		<>
 			<div

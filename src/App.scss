@@ -1,5 +1,6 @@
 :root {
   --chkBgColor: white;
+  --vh: 1vh;
 }
 
 .body {
@@ -7,7 +8,9 @@
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: top center;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
+  height: calc(var(--vh) * 100)
 }
 
 // Breakpoints

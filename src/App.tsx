@@ -13,43 +13,30 @@ import TodoList, { Todo } from './components/TodoList';
 import './App.scss';
 
 
-  
+
 
 function App() {
 	const [theme, setTheme] = useState('dark');
 	const isWideScreen = useWindowWide(480);
 	const [currentFilter, setCurrentFilter] = useState('all')
-	const [todos, setTodos] = useState<Todo[]>([
-		{
-			id: 1,
-			todo: "Finish homework",
-			isCompleted: false,
-		  },
-		  {
-			id: 2,
-			todo: "Go grocery shopping",
-			isCompleted: false,
-		  },
-		  {
-			id: 3,
-			todo: "Attend meeting",
-			isCompleted: true,
-		  },
-		  {
-			id: 4,
-			todo: "Clean the house",
-			isCompleted: false,
-		  },
-	])
-
-
-
+	const [todos, setTodos] = useState<Todo[]>([])
+	
+	
 	const count = todos.filter(todo => todo.isCompleted === false).length
 
 	useEffect(() => {
 		const lsTheme = localStorage.getItem('theme') || 'dark';
 		setTheme(lsTheme);
-	}, []);
+
+		const data = localStorage.getItem('todos')
+		const storedTodos: Todo[] = data ? JSON.parse(data) : []
+		console.log(storedTodos)
+		storedTodos.length > 0 && setTodos(storedTodos)
+	}, [])
+
+	useEffect(() => {
+		localStorage.setItem('todos', JSON.stringify(todos))
+	},[todos])
 
 
 	const toggleTheme = () => {
@@ -74,11 +61,20 @@ function App() {
 	};
 
 	const addTodo = (todo: string) => {
-		console.log(todo);
+		const todoToAdd: Todo = { id: Date.now(), todo: todo, isCompleted: false }
+		setTodos([todoToAdd, ...todos])
 	};
 
 	const handleToggle = (id: number, isCompleted: boolean) => {
 		setTodos(todos.map(todo => todo.id == id ? {...todo, isCompleted: isCompleted} : todo))
+	}
+
+	const handleDelete = (id: number) => {
+		setTodos(todos.filter(todo => todo.id !== id))
+	}
+
+	const clearCompleted = () => {
+		setTodos(todos.filter(todo => todo.isCompleted !== true))
 	}
 
 	return (
@@ -112,8 +108,8 @@ function App() {
 					todos={todos}
 					currentFilter={currentFilter}
 					onFilter={(filter) => setCurrentFilter(filter)}
-					onClear={() => console.log('clear completed')}
-					onRemoveTodo={(id) => console.log('remove completed ' + id)}
+					onClear={() => clearCompleted()}
+					onRemoveTodo={(id) => handleDelete(id)}
 					onToggleTodo={(id, isCompleted) => handleToggle(id, isCompleted)}
 				/>
 			</TodoContainer>
