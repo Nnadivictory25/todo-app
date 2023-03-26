@@ -179,7 +179,7 @@ const TodoList = ({
 
 			{!isWideScreen && todos && (
 				<div
-					className={`sortCtn footer flex items-center gap-x-5 rounded shadow-sm p-4 justify-center text-darkGreyBlueD transition duration-150 mt-6 bg-${themeColor} `}>
+					className={`sortCtn footer flex items-center gap-x-5 rounded shadow-sm p-4 justify-center text-darkGreyBlueD transition duration-150 mt-6 ${themeColor} `}>
 					<p
 						onClick={() => onFilter('all')}
 						className={`${hoverClass} ${currentFilter == 'all' && 'active'}`}>
