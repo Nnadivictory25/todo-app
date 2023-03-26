@@ -29,7 +29,10 @@ module.exports = {
 			},
 			container: {
 				center: true,
-			  },
+			},
+			safelist: [
+				'bg-vDarkDesBlue'
+			],
 			fontFamily: {
 				sans: ['Josefin Sans', 'sans-serif'],
 			},

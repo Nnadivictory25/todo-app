@@ -31,7 +31,7 @@ const TodoList = ({
 }: Props) => {
 	const isWideScreen = useWindowWide(480);
 
-	const themeColor = theme == 'dark' ? 'vDarkDesBlue' : 'lightGray';
+	const themeColor = theme == 'dark' ? 'bg-vDarkDesBlue' : 'bg-lightGray';
 
 	useEffect(() => {
 		const root = document.documentElement;
@@ -56,7 +56,7 @@ const TodoList = ({
 	return (
 		<>
 			<div
-				className={`rounded shadow-sm relative transition duration-150 mt-6 bg-${themeColor}`}>
+				className={`rounded shadow-sm relative transition duration-150 mt-6 ${themeColor}`}>
 				{currentFilter == 'all'
 					? todos.map(({ id, todo, isCompleted }) => (
 							<label
