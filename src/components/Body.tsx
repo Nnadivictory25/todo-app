@@ -9,11 +9,11 @@ interface Props {
 const Body = ({ bgColor, getBgImg, children }: Props) => {
 	const bgImg = getBgImg();
 	return (
-		<div
+		<main
 			className='body'
 			style={{ backgroundColor: bgColor, backgroundImage: `url(${bgImg})` }}>
 			{children}
-		</div>
+		</main>
 	);
 };
 
