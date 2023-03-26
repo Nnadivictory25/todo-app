@@ -93,7 +93,7 @@ function App() {
 			getBgImg={() => getBgImg()}>
 			<TodoContainer theme={theme}>
 				<div className='flex justify-between items-center mb-10'>
-					<h1 className='text-white font-semibold tracking-[.25em]'>TODO</h1>
+					<h1 className='text-white text-3xl font-semibold tracking-[.25em]'>TODO</h1>
 					{theme == 'dark' ? (
 						<img
 							className='lg:cursor-pointer'
