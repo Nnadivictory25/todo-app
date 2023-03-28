@@ -14,7 +14,7 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
 
 ## Overview
 
-### The challenge
+### The challenge 
 
 Users should be able to:
 
